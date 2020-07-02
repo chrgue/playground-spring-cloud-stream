@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: categoryProcessor;filterProcessor;categorySink
+server:
+  port: 0

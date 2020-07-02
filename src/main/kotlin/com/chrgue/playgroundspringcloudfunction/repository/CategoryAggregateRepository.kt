@@ -1,0 +1,6 @@
+package com.chrgue.playgroundspringcloudfunction.repository
+
+import com.chrgue.playgroundspringcloudfunction.model.CategoryAggregate
+import org.springframework.data.mongodb.repository.MongoRepository
+
+interface CategoryAggregateRepository : MongoRepository<CategoryAggregate, String>

@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      function:
+        definition: filterSource;categorySource
+server:
+  port: 0
