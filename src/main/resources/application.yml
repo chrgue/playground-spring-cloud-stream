@@ -7,30 +7,30 @@ spring:
           minPartitionCount: 4
 
       bindings:
-        filterGeneration-out-0:
+        filterSource-out-0:
           destination: raw_filter
           producer:
             partitionKeyExpression: payload.id
 
-        categoryGeneration-out-0:
+        categorySource-out-0:
           destination: raw_category
           producer:
             partitionKeyExpression: payload.id
 
-        categoryAggregation-in-0:
+        categoryProcessor-in-0:
           destination: raw_category
           group: myGroup
 
-        categoryAggregation-out-0:
+        categoryProcessor-out-0:
           destination: aggregate_category
           producer:
             partitionKeyExpression: payload.id
 
-        filterAggregation-in-0:
+        filterProcessor-in-0:
           destination: raw_filter
           group: myGroup
 
-        filterAggregation-out-0:
+        filterProcessor-out-0:
           destination: aggregate_category
           producer:
             partitionKeyExpression: payload.id
