@@ -21,4 +21,6 @@ The project consists of multiple functions:
     
 **Start consumer (processors & sinks only):**
 
+_Please note you can start this consumer multiple time._ 
+
     ./mvnw spring-boot:run -Dspring-boot.run.profiles=consumer
