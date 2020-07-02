@@ -9,7 +9,7 @@ The project consists of multiple functions:
 * filterSource - generates random filters
 * categoryProcessor - transforms categories into aggregate
 * filterProcessor - transforms filters into aggregate
-* categorySink - merges aggregates
+* categorySink - merges aggregates & stores it in the mongo db
 
 **Start environment:**
 
