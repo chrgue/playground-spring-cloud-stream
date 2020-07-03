@@ -24,3 +24,7 @@ The project consists of multiple functions:
 _Please note you can start this consumer multiple time._ 
 
     ./mvnw spring-boot:run -Dspring-boot.run.profiles=consumer
+    
+**Run automated tests**
+
+    ./mvnw clean verify
