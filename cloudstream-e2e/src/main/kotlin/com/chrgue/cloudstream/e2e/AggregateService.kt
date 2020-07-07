@@ -1,8 +1,8 @@
-package com.chrgue.playgroundspringcloudfunction
+package com.chrgue.cloudstream.e2e
 
-import com.chrgue.playgroundspringcloudfunction.model.raw.Category
-import com.chrgue.playgroundspringcloudfunction.model.CategoryAggregate
-import com.chrgue.playgroundspringcloudfunction.model.raw.Filter
+import com.chrgue.cloudstream.e2e.model.raw.Category
+import com.chrgue.cloudstream.e2e.model.CategoryAggregate
+import com.chrgue.cloudstream.e2e.model.raw.Filter
 import org.springframework.stereotype.Component
 
 @Component

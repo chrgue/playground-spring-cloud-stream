@@ -1,6 +1,6 @@
-package com.chrgue.playgroundspringcloudfunction.model
+package com.chrgue.cloudstream.e2e.model
 
-import com.chrgue.playgroundspringcloudfunction.model.raw.Filter
+import com.chrgue.cloudstream.e2e.model.raw.Filter
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 

@@ -1,9 +1,9 @@
-package com.chrgue.playgroundspringcloudfunction
+package com.chrgue.cloudstream.e2e
 
-import com.chrgue.playgroundspringcloudfunction.model.CategoryAggregate
-import com.chrgue.playgroundspringcloudfunction.model.raw.Category
-import com.chrgue.playgroundspringcloudfunction.model.raw.Filter
-import com.chrgue.playgroundspringcloudfunction.repository.CategoryAggregateRepository
+import com.chrgue.cloudstream.e2e.model.CategoryAggregate
+import com.chrgue.cloudstream.e2e.model.raw.Category
+import com.chrgue.cloudstream.e2e.model.raw.Filter
+import com.chrgue.cloudstream.e2e.repository.CategoryAggregateRepository
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean

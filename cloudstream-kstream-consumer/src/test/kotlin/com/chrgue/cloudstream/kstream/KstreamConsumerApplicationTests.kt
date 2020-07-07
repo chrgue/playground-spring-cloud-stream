@@ -1,4 +1,4 @@
-package com.chrgue.springcloudstream.kstream
+package com.chrgue.cloudstream.kstream
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

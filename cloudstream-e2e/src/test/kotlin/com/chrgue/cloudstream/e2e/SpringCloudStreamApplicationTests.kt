@@ -1,6 +1,6 @@
-package com.chrgue.playgroundspringcloudfunction
+package com.chrgue.cloudstream.e2e
 
-import com.chrgue.playgroundspringcloudfunction.repository.CategoryAggregateRepository
+import com.chrgue.cloudstream.e2e.repository.CategoryAggregateRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.awaitility.Awaitility.await
 import org.junit.jupiter.api.Test

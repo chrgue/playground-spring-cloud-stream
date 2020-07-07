@@ -1,4 +1,4 @@
-package com.chrgue.springcloudstream.kstream
+package com.chrgue.cloudstream.kstream
 
 import org.apache.kafka.streams.kstream.KStream
 import org.springframework.boot.autoconfigure.SpringBootApplication

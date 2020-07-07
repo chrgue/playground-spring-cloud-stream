@@ -1,6 +1,6 @@
-package com.chrgue.playgroundspringcloudfunction.repository
+package com.chrgue.cloudstream.e2e.repository
 
-import com.chrgue.playgroundspringcloudfunction.model.CategoryAggregate
+import com.chrgue.cloudstream.e2e.model.CategoryAggregate
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface CategoryAggregateRepository : MongoRepository<CategoryAggregate, String>

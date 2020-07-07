@@ -1,4 +1,4 @@
-package com.chrgue.playgroundspringcloudfunction.model.raw
+package com.chrgue.cloudstream.e2e.model.raw
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

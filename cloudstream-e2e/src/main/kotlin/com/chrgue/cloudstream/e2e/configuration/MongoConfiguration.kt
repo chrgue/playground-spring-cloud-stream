@@ -1,4 +1,4 @@
-package com.chrgue.playgroundspringcloudfunction.configuration
+package com.chrgue.cloudstream.e2e.configuration
 
 import org.springframework.boot.autoconfigure.mongo.MongoClientSettingsBuilderCustomizer
 import org.springframework.context.annotation.Bean
