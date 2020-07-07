@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        processor-in-0:
+          destination: raw_strings
+          group: myGroup
