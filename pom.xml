@@ -20,7 +20,7 @@
     </properties>
 
     <modules>
-        <module>cloudstream-kstream-consumer</module>
+        <module>cloudstream-kstream</module>
         <module>cloudstream-e2e</module>
     </modules>
 

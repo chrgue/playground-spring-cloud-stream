@@ -5,3 +5,6 @@ spring:
         processor-in-0:
           destination: raw_strings
           group: myGroup
+        processor-out-0:
+          destination: processed_strings
+          group: myGroup

@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.chrgue</groupId>
-    <artifactId>cloudstream-kstream-consumer</artifactId>
+    <artifactId>cloudstream-kstream</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
