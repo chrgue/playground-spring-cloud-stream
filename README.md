@@ -1,5 +1,18 @@
 # playground for spring cloud stream
 
+## Prerequisites
+
+* Install docker
+* Install docker-compose
+* Install kafkacat
+
+
+**Run tests**
+
+    .mvnw clean verify
+
+
+
 This project processes multiple domain objects (Filters & Categories) to maintain a so called _CategoryAggregate_.
 It uses kafka partitions to allow a stateful processing. The aggregations will be saved in a mongo collection. 
 
