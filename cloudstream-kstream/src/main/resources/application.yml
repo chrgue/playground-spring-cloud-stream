@@ -3,8 +3,6 @@ spring:
     stream:
       bindings:
         processor-in-0:
-          destination: raw_strings
-          group: myGroup
+          destination: filters
         processor-out-0:
-          destination: processed_strings
-          group: myGroup
+          destination: xformed
