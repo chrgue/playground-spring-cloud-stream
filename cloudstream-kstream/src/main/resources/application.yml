@@ -3,6 +3,8 @@ spring:
     stream:
       bindings:
         processor-in-0:
+          destination: categories
+        processor-in-1:
           destination: filters
         processor-out-0:
           destination: xformed

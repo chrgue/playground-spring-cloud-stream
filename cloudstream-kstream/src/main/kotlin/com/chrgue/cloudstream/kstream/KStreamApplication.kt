@@ -1,38 +1,67 @@
 package com.chrgue.cloudstream.kstream
 
+import com.chrgue.cloudstream.kstream.model.Category
 import com.chrgue.cloudstream.kstream.model.CategoryAggregate
+import com.chrgue.cloudstream.kstream.model.CategoryFiltersInfo
 import com.chrgue.cloudstream.kstream.model.Filter
 import org.apache.kafka.common.serialization.Serdes
-import org.apache.kafka.streams.kstream.Grouped
-import org.apache.kafka.streams.kstream.KStream
-import org.apache.kafka.streams.kstream.Materialized
+import org.apache.kafka.common.utils.Bytes
+import org.apache.kafka.streams.kstream.*
+import org.apache.kafka.streams.state.KeyValueStore
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.kafka.support.serializer.JsonSerde
-import java.util.function.Function
+import java.util.function.BiFunction
 
 @SpringBootApplication
 class KStreamApplication {
 
     @Bean
-    fun processor() = Function<KStream<String, Filter>, KStream<String, CategoryAggregate>> {
-        it.groupBy({ _, filter -> filterGroupBy(filter) }, Grouped.with(Serdes.String(), JsonSerde(Filter::class.java)))
-                .aggregate(this::initializeCategoryFilters, { categoryId, filter, categoryFilters ->
-                    categoryFilters(categoryFilters, filter, categoryId)
-                }, Materialized.with(Serdes.String(), JsonSerde(CategoryAggregate::class.java)))
-                .toStream()
+    fun processor() = BiFunction<
+            KStream<String, Category>, KStream<String, Filter>,
+            KStream<String, CategoryAggregate>> { categories, filters ->
+
+        val categoriesFilters = getCategoryFiltersTable(filters)
+        val categories = getCategoriesTable(categories)
+
+        categories
+                .join(categoriesFilters, { it.id }) { category, categoryFiltersInfo ->
+                    CategoryAggregate(id = category.id, name = category.name, filtersInfo = categoryFiltersInfo)
+                }.toStream()
     }
 
-    private fun filterGroupBy(v: Filter) = v.categoryId
+    private fun getCategoriesTable(categories: KStream<String, Category>): KTable<String, Category> {
+        return categories
+                .selectKey { k, v -> v.id } // ensure we have o proper key
+                .toTable(serdesForCategory())
+    }
 
-    private fun categoryFilters(categoryAggregate: CategoryAggregate, filter: Filter, categoryId: String): CategoryAggregate {
-        val filterRelation = categoryAggregate.allFilters + mapOf(filter.id to filter)
+    private fun getCategoryFiltersTable(filters: KStream<String, Filter>): KTable<String, CategoryFiltersInfo>? {
+        return filters
+                .groupBy({ _, filter -> filter.categoryId }, serdesForFilter())
+                .aggregate({ CategoryFiltersInfo() }, { _, filter, categoryFilters ->
+                    aggregateCategoryInfo(categoryFilters, filter)
+                }, serdesForCategoryFiltersInfo())
+    }
+
+    private fun aggregateCategoryInfo(currentCategoryInfo: CategoryFiltersInfo, filter: Filter): CategoryFiltersInfo {
+        val filterRelation = currentCategoryInfo.allFilters + mapOf(filter.id to filter)
         val topFilters = filterRelation.values.toList().sortedByDescending(Filter::clickCount)
-        return categoryAggregate.copy(categoryId = categoryId, allFilters = filterRelation, topFilters = topFilters)
+        return currentCategoryInfo.copy(allFilters = filterRelation, topFilters = topFilters)
     }
 
-    private fun initializeCategoryFilters() = CategoryAggregate()
+    /**
+     * Serializers / Deserializers
+     */
+
+    private fun serdesForFilter() = Grouped.with(Serdes.String(), JsonSerde(Filter::class.java))
+
+    private fun serdesForCategoryFiltersInfo(): Materialized<String, CategoryFiltersInfo, KeyValueStore<Bytes, ByteArray>>? =
+            Materialized.with(Serdes.String(), JsonSerde(CategoryFiltersInfo::class.java))
+
+    private fun serdesForCategory(): Materialized<String, Category, KeyValueStore<Bytes, ByteArray>>? =
+            Materialized.with(Serdes.String(), JsonSerde(Category::class.java))
 }
 
 fun main(args: Array<String>) {

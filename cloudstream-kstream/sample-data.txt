@@ -1,4 +1,0 @@
-{"id": "123", "name": "Filter A", "categoryId": "abc", "clickCount": 7}
-{"id": "456", "name": "Filter B", "categoryId": "def", "clickCount": 9}
-{"id": "111", "name": "Filter C", "categoryId": "abc", "clickCount": 12}
-{"id": "222", "name": "Filter D", "categoryId": "def", "clickCount": 9}

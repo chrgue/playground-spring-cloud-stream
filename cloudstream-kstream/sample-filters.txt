@@ -1,0 +1,4 @@
+{"id": "1f", "name": "Black", "categoryId": "1c", "clickCount": 7}
+{"id": "2f", "name": "Has remote", "categoryId": "2c", "clickCount": 85}
+{"id": "3f", "name": "Filter C", "categoryId": "1c", "clickCount": 12}
+{"id": "4f", "name": "Filter D", "categoryId": "2c", "clickCount": 9}

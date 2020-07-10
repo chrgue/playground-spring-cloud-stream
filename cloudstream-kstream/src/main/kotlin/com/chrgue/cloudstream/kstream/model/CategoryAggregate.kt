@@ -1,5 +1,5 @@
 package com.chrgue.cloudstream.kstream.model
 
-data class CategoryAggregate(val categoryId:String="",
-                             val allFilters:Map<String,Filter> = emptyMap(),
-                             val topFilters:List<Filter> = emptyList() )
+data class CategoryAggregate(val id: String = "",
+                             val name: String = "",
+                             val filtersInfo: CategoryFiltersInfo? = null)
